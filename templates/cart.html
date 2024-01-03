@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cart</title>
+</head>
+<body>
+
+<div id="nav-bar">
+    <a href="/">About</a>
+
+    <a href="/catalog">Catalog</a>
+
+    {% if login is not none %}
+    <a href="/profile">Profile</a>
+    {% endif %}
+
+    {% if login is not none %}
+    <a href="/cart">Cart</a>
+    {% endif %}
+
+    {% if admin == true %}
+    <a href="/admin">Admin</a>
+    {% endif %}
+
+    {% if login is none %}
+    <a href="/login">Login</a>
+    {% endif %}
+
+    {% if login is none %}
+    <a href="/register">Register</a>
+    {% endif %}
+
+    {% if login is not none %}
+    <form style="display: inline" action="/logout" method="POST">
+        <input type="submit" value="Logout">
+    </form>
+    {% endif %}
+
+    <hr>
+
+</div>
+
+{% for item in items %}
+<div>
+    Id: {{item[0]}}<br>
+    Name: {{item[1]}}<br>
+    Description: {{item[2]}}<br>
+    Price: {{item[3]}}<br>
+    Category: {{item[4]}}<br>
+    Quantity: <button>-</button> {{quantities[loop.index - 1]}} <button>+</button><br>
+    <form action="/cart/delete" method="post">
+        <input type="hidden" name="item-id" value="{{item[0]|e}}">
+        <input type="submit" value="Delete">
+    </form>
+    <hr>
+    {% endfor %}
+</div>
+
+{% if items|length > 0  %}
+<form action="/make-order" method="post">
+    <input value="Make order" type="submit">
+</form>
+{% endif %}
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+
+<div id="nav-bar">
+    <a href="/">About</a>
+
+    <a href="/catalog">Catalog</a>
+
+    {% if login is not none %}
+    <a href="/profile">Profile</a>
+    {% endif %}
+
+    {% if login is not none %}
+    <a href="/cart">Cart</a>
+    {% endif %}
+
+    {% if admin == true %}
+    <a href="/admin">Admin</a>
+    {% endif %}
+
+    {% if login is none %}
+    <a href="/login">Login</a>
+    {% endif %}
+
+    {% if login is none %}
+    <a href="/register">Register</a>
+    {% endif %}
+
+    {% if login is not none %}
+    <form style="display: inline" action="/logout" method="POST">
+        <input type="submit" value="Logout">
+    </form>
+    {% endif %}
+
+    <hr>
+
+</div>
+
+<p>It's a simple online store made with Flask</p>
+
+</body>
+</html>
