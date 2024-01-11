@@ -7,7 +7,7 @@
 <body>
 
 <div id="nav-bar">
-    <a href="/">About</a>
+    <a href="/about">About</a>
 
     <a href="/catalog">Catalog</a>
 
@@ -42,16 +42,16 @@
 </div>
 
 <form action="/profile" method="post">
-    Name:<input value="{{user[0]}}" type="text" name="name">
+    Name:<input value="{{user.name}}" type="text" name="name">
     <br>
 
-    Surname:<input value="{{user[1]}}" type="text" name="surname">
+    Surname:<input value="{{user.surname}}" type="text" name="surname">
     <br>
 
-    Password:<input value="{{user[2]}}" type="text" name="password">
+    Password:<input value="{{user.password}}" type="text" name="password">
     <br>
 
-    Phone number:<input value="{{user[3]}}" type="text" name="phone_number">
+    Phone number:<input value="{{user.phone_number}}" type="text" name="phone_number">
     <br>
     <br>
 

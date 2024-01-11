@@ -7,7 +7,7 @@
 <body>
 
 <div id="nav-bar">
-    <a href="/">About</a>
+    <a href="/about">About</a>
 
     <a href="/catalog">Catalog</a>
 
@@ -41,16 +41,16 @@
 
 </div>
 <div>
-    Id: {{item[0]}}<br>
-    Name: {{item[1]}}<br>
-    Description: {{item[2]}}<br>
-    Price: {{item[3]}}<br>
-    Category: {{item[4]}}<br>
-    Quantity: {{item[5]}}<br>
+    Id: {{item.id}}<br>
+    Name: {{item.name}}<br>
+    Description: {{item.description}}<br>
+    Price: {{item.price}}<br>
+    Category: {{item.category}}<br>
+    Quantity: {{item.quantity}}<br>
 </div>
 
 <form action="/cart" method="post">
-    <input type="hidden" name="item-id" value="{{item[0]}}">
+    <input type="hidden" name="item-id" value="{{item.id}}">
     <button type="submit">Order</button>
 </form>
 

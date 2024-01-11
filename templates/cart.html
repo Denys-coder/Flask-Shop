@@ -7,7 +7,7 @@
 <body>
 
 <div id="nav-bar">
-    <a href="/">About</a>
+    <a href="/about">About</a>
 
     <a href="/catalog">Catalog</a>
 
@@ -43,14 +43,14 @@
 
 {% for item in items %}
 <div>
-    Id: {{item[0]}}<br>
-    Name: {{item[1]}}<br>
-    Description: {{item[2]}}<br>
-    Price: {{item[3]}}<br>
-    Category: {{item[4]}}<br>
+    Id: {{item.id}}<br>
+    Name: {{item.name}}<br>
+    Description: {{item.description}}<br>
+    Price: {{item.price}}<br>
+    Category: {{item.category}}<br>
     Quantity: <button>-</button> {{quantities[loop.index - 1]}} <button>+</button><br>
     <form action="/cart/delete" method="post">
-        <input type="hidden" name="item-id" value="{{item[0]|e}}">
+        <input type="hidden" name="item-id" value="{{item.id|e}}">
         <input type="submit" value="Delete">
     </form>
     <hr>
@@ -58,7 +58,7 @@
 </div>
 
 {% if items|length > 0  %}
-<form action="/make-order" method="post">
+<form action="/cart/make-order" method="post">
     <input value="Make order" type="submit">
 </form>
 {% endif %}
