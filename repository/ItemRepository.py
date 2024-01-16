@@ -1,4 +1,4 @@
-from entity.Item import Item
+from entity.DBClasses import Item
 from service.DBSessionStarter import db_session
 
 

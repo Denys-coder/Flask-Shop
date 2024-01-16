@@ -1,9 +1,7 @@
 from flask import request, render_template, redirect, session, Blueprint
 from service.DBSessionStarter import db_session
 
-
 bp = Blueprint('search_controller', __name__)  # Create a Blueprint named 'root'
-
 
 # # search shop for items
 # @bp.route('/shop/search', methods=['POST'])

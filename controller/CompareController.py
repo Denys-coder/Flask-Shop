@@ -1,7 +1,6 @@
 from flask import request, render_template, redirect, session, Blueprint
 from service.DBSessionStarter import db_session
 
-
 bp = Blueprint('compare_controller', __name__)  # Create a Blueprint named 'root'
 
 # # get comparison list

@@ -1,9 +1,7 @@
 from flask import request, render_template, redirect, session, Blueprint
 from service.DBSessionStarter import db_session
 
-
 bp = Blueprint('favourite_controller', __name__)  # Create a Blueprint named 'root'
-
 
 # # get all favourite items for specified list
 # @bp.route('/shop/favourites/<int:list_id>', methods=['GET'])

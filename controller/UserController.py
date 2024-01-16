@@ -1,6 +1,6 @@
 from flask import request, render_template, redirect, session, Blueprint
 
-from entity.User import User
+from entity.DBClasses import User
 from service.DBSessionStarter import db_session
 from repository.UserRepository import *
 
@@ -30,6 +30,7 @@ def post_user():
     surname = request.form['surname']
     password = request.form['password']
     phone_number = request.form['phone_number']
-    user = User(name, surname, password, phone_number, session['login'])
+    email = request.form['email']
+    user = User(name, surname, password, phone_number, session['login'], email)
     update_user(user)
     return redirect('/profile')

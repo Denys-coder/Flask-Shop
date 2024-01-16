@@ -1,9 +1,7 @@
 from flask import request, render_template, redirect, session, Blueprint
 from service.DBSessionStarter import db_session
 
-
 bp = Blueprint('order_controller', __name__)  # Create a Blueprint named 'root'
-
 
 # # get order data
 # @bp.route('/shop/cart/order', methods=['GET'])

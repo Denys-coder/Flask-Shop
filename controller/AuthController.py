@@ -1,5 +1,5 @@
 from flask import request, render_template, redirect, session, Blueprint
-from entity.User import User
+from entity.DBClasses import User
 from service.DBSessionStarter import db_session
 from repository.UserRepository import *
 
@@ -19,7 +19,8 @@ def post_register():
     password = request.form['password']
     phone_number = request.form['phone_number']
     login = request.form['login']
-    user = User(name, surname, password, phone_number, login)
+    email = request.form['email']
+    user = User(name, surname, password, phone_number, login, email)
     save_new_user(user)
     session['login'] = login
     return redirect('/profile')

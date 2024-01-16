@@ -2,6 +2,7 @@ from flask import request, render_template, redirect, session, Blueprint
 from service.DBSessionStarter import db_session
 from repository.CartRepository import *
 from repository.ItemRepository import *
+from entity.DBClasses import Cart
 
 bp = Blueprint('cart_controller', __name__)  # Create a Blueprint named 'root'
 
