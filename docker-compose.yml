@@ -1,22 +1,9 @@
 version: '3'
 
 services:
-  flask:
-    image: python:3.8
-    container_name: flask
-    volumes:
-      - .:/app
-    working_dir: /app
-    depends_on:
-      - postgres
-    ports:
-      - "5000:5000"
-    command: "pip install --no-cache-dir -r requirements.txt && python app.py"
-    networks:
-      - main-network
 
-  postgres:
-    image: postgres:latest
+  database:
+    image: postgres
     container_name: postgres
     ports:
       - "5432:5432"
@@ -24,14 +11,13 @@ services:
       - POSTGRES_DB=flask-shop
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=123
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    networks:
-      - main-network
+    hostname: database
 
-volumes:
-  postgres_data:
-
-
-networks:
-  main-network:
+  backend:
+    container_name: flask
+    build:
+      context: .
+    depends_on:
+      - database
+    ports:
+      - "5000:5000"

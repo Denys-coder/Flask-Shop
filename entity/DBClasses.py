@@ -144,4 +144,4 @@ class Wishlist(Base):
         self.item_id = item_id
 
 
-# Base.metadata.create_all(engine)
+Base.metadata.create_all(engine)
