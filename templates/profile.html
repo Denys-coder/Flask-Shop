@@ -19,7 +19,11 @@
     <a href="/cart">Cart</a>
     {% endif %}
 
-    {% if admin == true %}
+    {% if login is not none %}
+    <a href="/compare">Compare</a>
+    {% endif %}
+
+    {% if admin== true %}
     <a href="/admin">Admin</a>
     {% endif %}
 

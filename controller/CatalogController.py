@@ -7,9 +7,14 @@ bp = Blueprint('catalog_controller', __name__)  # Create a Blueprint named 'root
 
 @bp.route('/catalog', methods=['GET'])
 def get_shop_items():
-    items = get_all_items()
-    return render_template('catalog.html', items=items, login=session.get('login'),
-                           admin=session.get('admin'))
+    name = request.args.get('name')
+    status = request.args.get('status')
+    category = request.args.get('category')
+    min_price = request.args.get('min-price')
+    max_price = request.args.get('max-price')
+    items = get_filtered_items(name, status, category, min_price, max_price)
+    return render_template('catalog.html', name=name, status=status, category=category, min_price=min_price,
+                           max_price=max_price, items=items, login=session.get('login'), admin=session.get('admin'))
 
 
 # watch item

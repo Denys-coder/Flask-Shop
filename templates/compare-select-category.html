@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Update profile</title>
+    <title>Select comparable categories</title>
 </head>
 <body>
 
@@ -20,9 +20,10 @@
     {% endif %}
 
     {% if login is not none %}
-    <a href="/compare"
+    <a href="/compare">Compare</a>
+    {% endif %}
 
-    {% if admin == true %}
+    {% if admin== true %}
     <a href="/admin">Admin</a>
     {% endif %}
 
@@ -44,24 +45,16 @@
 
 </div>
 
-<form action="/profile" method="post">
-    Name:<input value="{{user.name}}" type="text" name="name">
+<span>
+    Items divided by categories<br>
+    Select category to compare by:
     <br>
+</span>
 
-    Surname:<input value="{{user.surname}}" type="text" name="surname">
-    <br>
+{% for category in user_comparable_categories %}
+<a href="/compare/{{category}}">{{ category }}</a>
+{% endfor %}
 
-    Password:<input value="{{user.password}}" type="text" name="password">
-    <br>
 
-    Phone number:<input value="{{user.phone_number}}" type="text" name="phone_number">
-    <br>
-
-    Email:<input value="{{user.email}}" type="text" name="email">
-    <br>
-    <br>
-
-    <input type="submit" value="Update data">
-</form>
 </body>
 </html>

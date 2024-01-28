@@ -2,10 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Update profile</title>
+    <title>Compare items</title>
 </head>
 <body>
-
 <div id="nav-bar">
     <a href="/about">About</a>
 
@@ -20,9 +19,10 @@
     {% endif %}
 
     {% if login is not none %}
-    <a href="/compare"
+    <a href="/compare">Compare</a>
+    {% endif %}
 
-    {% if admin == true %}
+    {% if admin== true %}
     <a href="/admin">Admin</a>
     {% endif %}
 
@@ -42,26 +42,18 @@
 
     <hr>
 
+    {% for item in comparable_items %}
+    <span>{{item.id}}</span><br>
+    <span>{{item.name}}</span><br>
+    <span>{{item.description}}</span><br>
+    <span>{{item.price}}</span><br>
+    <span>{{item.category}}</span><br>
+    <span>{{item.quantity}}</span><br>
+    <span>{{item.status}}</span><br>
+    <hr><br>
+    {% endfor %}
+
+
 </div>
-
-<form action="/profile" method="post">
-    Name:<input value="{{user.name}}" type="text" name="name">
-    <br>
-
-    Surname:<input value="{{user.surname}}" type="text" name="surname">
-    <br>
-
-    Password:<input value="{{user.password}}" type="text" name="password">
-    <br>
-
-    Phone number:<input value="{{user.phone_number}}" type="text" name="phone_number">
-    <br>
-
-    Email:<input value="{{user.email}}" type="text" name="email">
-    <br>
-    <br>
-
-    <input type="submit" value="Update data">
-</form>
 </body>
 </html>

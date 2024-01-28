@@ -19,7 +19,11 @@
     <a href="/cart">Cart</a>
     {% endif %}
 
-    {% if admin == true %}
+    {% if login is not none %}
+    <a href="/compare">Compare</a>
+    {% endif %}
+
+    {% if admin== true %}
     <a href="/admin">Admin</a>
     {% endif %}
 
@@ -41,6 +45,44 @@
 
 </div>
 
+<form>
+    <span>
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" value="{% if name is not none %}{{ name }}{% endif %}"/>
+    </span>
+    <span>
+        <label for="status">Status:</label>
+        <select name="status" id="status">
+            <option value="available" {% if status== 'available' %}selected{% endif %}>available</option>
+            <option value="unavailable" {% if status== 'unavailable' %}selected{% endif %}>unavailable</option>
+            <option value="waiting" {% if status== 'waiting' %}selected{% endif %}>waiting</option>
+            <option value="out of stock" {% if status== 'out_of_stock' %}selected{% endif %}>out of stock</option>
+        </select>
+    </span>
+    <span>
+        <label for="category">Category:</label>
+        <select name="category" id="category">
+            <option value="laptop" {% if category== 'laptop' %}selected{% endif %}>Laptop</option>
+            <option value="tablet" {% if category== 'tablet' %}selected{% endif %}>Tablet</option>
+            <option value="phone" {% if category== 'phone' %}selected{% endif %}>Phone</option>
+            <option value="tv" {% if category== 'tv' %}selected{% endif %}>TV</option>
+        </select>
+    </span>
+    <span>
+        <span>Price:</span>
+        <label for="min-price">min:</label>
+        <input type="text" id="min-price" name="min-price" size="5"
+               value="{% if min_price is not none %}{{ min_price }}{% endif %}">
+        <label for="max-price">max:</label>
+        <input type="text" id="max-price" name="max-price" size="5"
+               value="{% if max_price is not none %}{{ max_price }}{% endif %}">
+    </span>
+    <input type="submit" value="Search">
+</form>
+
+<hr>
+
+
 {% for item in items %}
 <div>
     <p>Id: {{ item.id }}</p>
@@ -50,7 +92,14 @@
     <p>Category: {{ item.category }}</p>
     <p>Quantity: {{ item.quantity }}</p>
     <a href="/catalog/{{item.id}}">Watch details</a>
+    <br>
+    <br>
+    {% if login is not none %}
+    <form action="/compare/{{item.id}}" method="post">
+        <input type="submit" value="Add to comparison">
+    </form>
     <hr>
+    {% endif %}
 </div>
 {% endfor %}
 
