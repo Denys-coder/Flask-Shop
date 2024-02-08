@@ -5,6 +5,7 @@
     <title>Compare items</title>
 </head>
 <body>
+
 <div id="nav-bar">
     <a href="/about">About</a>
 
@@ -22,7 +23,7 @@
     <a href="/compare">Compare</a>
     {% endif %}
 
-    {% if admin== true %}
+    {% if admin == true %}
     <a href="/admin">Admin</a>
     {% endif %}
 
@@ -42,6 +43,9 @@
 
     <hr>
 
+</div>
+
+<div>
     {% for item in comparable_items %}
     <span>{{item.id}}</span><br>
     <span>{{item.name}}</span><br>
@@ -50,10 +54,10 @@
     <span>{{item.category}}</span><br>
     <span>{{item.quantity}}</span><br>
     <span>{{item.status}}</span><br>
-    <hr><br>
+    <hr>
+    <br>
     {% endfor %}
-
-
 </div>
+
 </body>
 </html>

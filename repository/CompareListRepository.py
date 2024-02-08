@@ -10,7 +10,7 @@ def get_comparable_item_categories_by_user(user):
         .join(Item, ItemCategory.id == Item.category)
         .join(CompareList, Item.id == CompareList.item_id)
         .join(User, CompareList.user_login == User.login)
-        .filter(User.login == user.login).all())
+        .filter(User.login == user.login).distinct())
     item_categories = [name[0] for name in database_entries]
     return item_categories
 

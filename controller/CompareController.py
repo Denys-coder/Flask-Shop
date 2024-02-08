@@ -18,7 +18,7 @@ def get_compare():
 # add item to comparison
 @bp.route('/compare/<int:item_id>', methods=['POST'])
 def post_compare(item_id):
-    CompareListRepository.add_comparable_item(item_id, session['login'])
+    CompareListRepository.add_comparable_item(session['login'], item_id)
     return redirect('/catalog')
 
 

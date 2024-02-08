@@ -165,8 +165,7 @@ class CompareList(Base):
     user_login = Column(String(32), ForeignKey('user.login'))
     item_id = Column(Integer, ForeignKey('item.id'))
 
-    def __init__(self, id, user_login, item_id):
-        self.id = id
+    def __init__(self, user_login, item_id):
         self.user_login = user_login
         self.item_id = item_id
 
